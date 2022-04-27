@@ -1,0 +1,7 @@
+ARG_ENABLE('action_at_a_distance', 'action_at_a_distance support', 'no');
+
+if (ACTION_AT_A_DISTANCE != 'no') {
+	AC_DEFINE('ACTION_AT_A_DISTANCE', 1, 'action_at_a_distance support enabled');
+
+	EXTENSION('action_at_a_distance', 'action_at_a_distance.c', null, '/DZEND_ENABLE_STATIC_TSRMLS_CACHE=1');
+}
