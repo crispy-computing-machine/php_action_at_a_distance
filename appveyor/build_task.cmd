@@ -41,7 +41,7 @@ setlocal enableextensions enabledelayedexpansion
 
 		if %errorlevel% neq 0 exit /b 3
 
-		nmake test TESTS="ext/php_action_at_a_distance/tests/basic/"
+		nmake test TESTS="%APPVEYOR_BUILD_FOLDER%\build\ext\tests\basic\"
 
 		if %errorlevel% neq 0 exit /b 3
 
