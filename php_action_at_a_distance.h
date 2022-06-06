@@ -3,14 +3,14 @@
 #ifndef ACTION_AT_A_DISTANCE_H
 # define ACTION_AT_A_DISTANCE_H
 
-extern zend_module_entry test_module_entry;
-# define phpext_test_ptr &test_module_entry
+extern zend_module_entry action_at_a_distance_module_entry;
+# define phpext_action_at_a_distance_ptr &action_at_a_distance_module_entry
 
 # define ACTION_AT_A_DISTANCE_VERSION "0.1.0"
 
 #define PHP_ACTION_AT_A_DISTANCE_NS "Action"
 
-# if defined(ZTS) && defined(COMPILE_DL_TEST)
+# if defined(ZTS) && defined(COMPILE_DL_ACTION_AT_A_DISTANCE)
 ZEND_TSRMLS_CACHE_EXTERN()
 # endif
 
