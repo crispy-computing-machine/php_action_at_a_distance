@@ -41,7 +41,7 @@ setlocal enableextensions enabledelayedexpansion
 
 		if %errorlevel% neq 0 exit /b 3
 
-		"%APPVEYOR_BUILD_FOLDER%\build\php.exe" "C:\projects\php-src\run-tests.php" -r"C:\projects\php-action-at-a-distance\tests\basic\"
+		"%APPVEYOR_BUILD_FOLDER%\build\php.exe" -f C:\projects\php-src\run-tests.php -r C:\projects\php-action-at-a-distance\tests\basic\
 
 		if %errorlevel% neq 0 exit /b 3
 
