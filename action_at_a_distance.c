@@ -101,7 +101,7 @@ PHP_FUNCTION(action_at_a_distance_scale_ref)
 
 static PHP_GINIT_FUNCTION(action_at_a_distance)
 {
-#if defined(COMPILE_DL_BCMATH) && defined(ZTS)
+#if defined(COMPILE_DL_ACTION_AT_A_DISTANCE) && defined(ZTS)
 	ZEND_TSRMLS_CACHE_UPDATE();
 #endif
 	action_at_a_distance_globals->scale= 1;
@@ -172,7 +172,7 @@ zend_module_entry action_at_a_distance_module_entry = {
 };
 /* }}} */
 
-#ifdef COMPILE_DL_TEST
+#ifdef COMPILE_DL_ACTION_AT_A_DISTANCE
 # ifdef ZTS
 ZEND_TSRMLS_CACHE_DEFINE()
 # endif
