@@ -19,12 +19,12 @@ ZEND_DECLARE_MODULE_GLOBALS(action_at_a_distance)
 
 PHP_INI_BEGIN()
 	STD_PHP_INI_ENTRY("action_at_a_distance.scale", "1", PHP_INI_ALL, OnUpdateLong, scale,
-		zend_test_globals, test_globals)
+		zend_action_at_a_distance_globals, action_at_a_distance_globals)
 PHP_INI_END()
 
-/* {{{ void test_test1()
+/* {{{ void action_at_a_distance_extension_loaded()
  */
-PHP_FUNCTION(test_test1)
+PHP_FUNCTION(action_at_a_distance_extension_loaded)
 {
 	ZEND_PARSE_PARAMETERS_NONE();
 
@@ -32,9 +32,9 @@ PHP_FUNCTION(test_test1)
 }
 /* }}} */
 
-/* {{{ string test_test2( [ string $var ] )
+/* {{{ string hellow_world( [ string $var ] )
  */
-PHP_FUNCTION(test_test2)
+PHP_FUNCTION(hellow_world)
 {
 	char *var = "World";
 	size_t var_len = sizeof("World") - 1;
@@ -85,10 +85,10 @@ static int do_scale_ref(zval *x, zend_long factor)
 	return SUCCESS;
 }
 
-PHP_FUNCTION(test_scale_ref)
+PHP_FUNCTION(action_at_a_distance_scale_ref)
 {
 	zval *x;
-	zend_long factor = TEST_G(scale); // default value
+	zend_long factor = action_at_a_distance_G(scale); // default value
 
 	ZEND_PARSE_PARAMETERS_START(1, 2)
 		Z_PARAM_ZVAL(x)
@@ -104,7 +104,7 @@ static PHP_GINIT_FUNCTION(action_at_a_distance)
 #if defined(COMPILE_DL_BCMATH) && defined(ZTS)
 	ZEND_TSRMLS_CACHE_UPDATE();
 #endif
-	test_globals->scale= 1;
+	action_at_a_distance_globals->scale= 1;
 }
 
 /* {{{ PHP_MINIT_FUNCTION
@@ -129,35 +129,35 @@ PHP_MINFO_FUNCTION(action_at_a_distance)
 
 /* {{{ arginfo
  */
-ZEND_BEGIN_ARG_INFO(arginfo_test_test1, 0)
+ZEND_BEGIN_ARG_INFO(arginfo_action_at_a_distance_extension_loaded, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO(arginfo_test_test2, 0)
+ZEND_BEGIN_ARG_INFO(arginfo_hellow_world, 0)
 	ZEND_ARG_INFO(0, str)
 ZEND_END_ARG_INFO()
 /* }}} */
 
-ZEND_BEGIN_ARG_INFO(arginfo_test_scale_ref, 0)
+ZEND_BEGIN_ARG_INFO(arginfo_action_at_a_distance_scale_ref, 0)
 	ZEND_ARG_INFO(1, x) // pass by reference
 	ZEND_ARG_INFO(0, factor)
 ZEND_END_ARG_INFO()
 
-/* {{{ test_functions[]
+/* {{{ action_at_a_distance_functions[]
  */
-static const zend_function_entry test_functions[] = {
-	PHP_FE(test_test1,		arginfo_test_test1)
-	PHP_FE(test_test2,		arginfo_test_test2)
-	PHP_FE(test_scale_ref,	arginfo_test_scale_ref)
+static const zend_function_entry action_at_a_distance_functions[] = {
+	PHP_FE(action_at_a_distance_extension_loaded,		arginfo_action_at_a_distance_extension_loaded)
+	PHP_FE(hellow_world,		arginfo_hellow_world)
+	PHP_FE(action_at_a_distance_scale_ref,	arginfo_action_at_a_distance_scale_ref)
 	PHP_FE_END
 };
 /* }}} */
 
-/* {{{ test_module_entry
+/* {{{ action_at_a_distance_module_entry
  */
-zend_module_entry test_module_entry = {
+zend_module_entry action_at_a_distance_module_entry = {
 	STANDARD_MODULE_HEADER,
 	"action_at_a_distance",					/* Extension name */
-	test_functions,			/* zend_function_entry */
+	action_at_a_distance_functions,			/* zend_function_entry */
 	PHP_MINIT(action_at_a_distance),				/* PHP_MINIT - Module initialization */
 	NULL,							/* PHP_MSHUTDOWN - Module shutdown */
 	NULL,							/* PHP_RINIT - Request initialization */
