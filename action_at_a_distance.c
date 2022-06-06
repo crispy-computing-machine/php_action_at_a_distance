@@ -6,7 +6,7 @@
 
 #include "php.h"
 #include "ext/standard/info.h"
-#include "php_test.h"
+#include "php_action_at_a_distance.h"
 
 /* For compatibility with older PHP versions */
 #ifndef ZEND_PARSE_PARAMETERS_NONE
