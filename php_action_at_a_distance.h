@@ -24,7 +24,6 @@ extern zend_module_entry action_at_a_distance_module_entry;
 ZEND_TSRMLS_CACHE_EXTERN()
 # endif
 
-
 // Global var declarations
 ZEND_BEGIN_MODULE_GLOBALS(action_at_a_distance)
 	zend_long debug;

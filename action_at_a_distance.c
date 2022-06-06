@@ -23,6 +23,9 @@
 	ZEND_PARSE_PARAMETERS_END()
 #endif
 
+// Main class entry var
+zend_class_entry *action_at_a_distance_ce;
+
 // INI Setup
 ZEND_DECLARE_MODULE_GLOBALS(action_at_a_distance)
 PHP_INI_BEGIN()
@@ -64,10 +67,19 @@ static PHP_GINIT_FUNCTION(action_at_a_distance)
 	action_at_a_distance_globals->debug = 1;
 }
 
-// Module Init, load ini file
+// Module Init
 PHP_MINIT_FUNCTION(action_at_a_distance)
 {
+	// Load ini file
 	REGISTER_INI_ENTRIES();
+
+	// Tmp ref to class entry
+	zend_class_entry ce;
+
+	// Create class
+	INIT_CLASS_ENTRY(ce, ZEND_NS_NAME(PHP_ACTION_AT_A_DISTANCE_NS, "Action"), uriparser_uri_methods);
+	action_at_a_distance_ce = zend_register_internal_class(&ce TSRMLS_CC);
+
 	return SUCCESS;
 }
 
@@ -76,7 +88,7 @@ PHP_MINIT_FUNCTION(action_at_a_distance)
 PHP_MINFO_FUNCTION(action_at_a_distance)
 {
 	php_info_print_table_start();
-	php_info_print_table_header(2, "action_at_a_distance support", "enabled");
+	php_info_print_table_header(2, "Action at a Distance Support", "enabled");
 	php_info_print_table_end();
 }
 
@@ -87,29 +99,32 @@ ZEND_BEGIN_ARG_INFO(arginfo_hello_world, 0)
 	ZEND_ARG_INFO(0, str)
 ZEND_END_ARG_INFO()
 
-
 // Function Delarations
 static const zend_function_entry action_at_a_distance_functions[] = {
 	PHP_FE(action_at_a_distance_extension_loaded,		arginfo_action_at_a_distance_extension_loaded)
-	PHP_FE(hello_world,		arginfo_hello_world)
+	PHP_FE(hello_world,									arginfo_hello_world)
 	PHP_FE_END
 };
 
+// Method Delarations
+static const zend_function_entry action_at_a_distance_methods[] = {
+    ZEND_FE_END
+};
 
 // action_at_a_distance_module_entry
 zend_module_entry action_at_a_distance_module_entry = {
 	STANDARD_MODULE_HEADER,
-	"action_at_a_distance",					/* Extension name */
-	action_at_a_distance_functions,			/* zend_function_entry */
-	PHP_MINIT(action_at_a_distance),				/* PHP_MINIT - Module initialization */
-	NULL,							/* PHP_MSHUTDOWN - Module shutdown */
-	NULL,							/* PHP_RINIT - Request initialization */
-	NULL,							/* PHP_RSHUTDOWN - Request shutdown */
+	"action_at_a_distance",						/* Extension name */
+	action_at_a_distance_functions,				/* zend_function_entry */
+	PHP_MINIT(action_at_a_distance),			/* PHP_MINIT - Module initialization */
+	NULL,										/* PHP_MSHUTDOWN - Module shutdown */
+	NULL,										/* PHP_RINIT - Request initialization */
+	NULL,										/* PHP_RSHUTDOWN - Request shutdown */
 	PHP_MINFO(action_at_a_distance),			/* PHP_MINFO - Module info */
-	ACTION_AT_A_DISTANCE_VERSION,		/* Version */
+	ACTION_AT_A_DISTANCE_VERSION,				/* Version */
 	PHP_MODULE_GLOBALS(action_at_a_distance),	/* Module globals */
 	PHP_GINIT(action_at_a_distance),			/* PHP_GINIT - Globals initialization */
-	NULL,					/* PHP_GSHUTDOWN - Globals shutdown */
+	NULL,										/* PHP_GSHUTDOWN - Globals shutdown */
 	NULL,
 	STANDARD_MODULE_PROPERTIES_EX
 };
