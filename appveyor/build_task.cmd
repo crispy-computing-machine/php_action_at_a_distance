@@ -41,7 +41,7 @@ setlocal enableextensions enabledelayedexpansion
 
 		if %errorlevel% neq 0 exit /b 3
 
-		nmake test
+		nmake test TESTS=001.phpt,002.phpt,003.phpt
 
 		if %errorlevel% neq 0 exit /b 3
 
