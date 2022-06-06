@@ -12,8 +12,6 @@
 # include "config.h"
 #endif
 
-#include "php.h"
-#include "ext/standard/info.h"
 #include "php_action_at_a_distance.h"
 
 // For compatibility with older PHP versions
@@ -77,7 +75,7 @@ PHP_MINIT_FUNCTION(action_at_a_distance)
 	zend_class_entry ce;
 
 	// Create class
-	INIT_CLASS_ENTRY(ce, ZEND_NS_NAME(PHP_ACTION_AT_A_DISTANCE_NS, "Action"), uriparser_uri_methods);
+	INIT_CLASS_ENTRY(ce, ZEND_NS_NAME(PHP_ACTION_AT_A_DISTANCE_NS, "AtADistance"), action_at_a_distance_methods);
 	action_at_a_distance_ce = zend_register_internal_class(&ce TSRMLS_CC);
 
 	return SUCCESS;
@@ -106,10 +104,7 @@ static const zend_function_entry action_at_a_distance_functions[] = {
 	PHP_FE_END
 };
 
-// Method Delarations
-static const zend_function_entry action_at_a_distance_methods[] = {
-    ZEND_FE_END
-};
+
 
 // action_at_a_distance_module_entry
 zend_module_entry action_at_a_distance_module_entry = {

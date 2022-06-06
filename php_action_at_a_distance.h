@@ -8,6 +8,9 @@
  * 
  */
 
+#include "php.h"
+#include "ext/standard/info.h"
+
 #ifndef ACTION_AT_A_DISTANCE_H
 # define ACTION_AT_A_DISTANCE_H
 
