@@ -32,9 +32,9 @@ PHP_FUNCTION(action_at_a_distance_extension_loaded)
 }
 /* }}} */
 
-/* {{{ string hellow_world( [ string $var ] )
+/* {{{ string hello_world( [ string $var ] )
  */
-PHP_FUNCTION(hellow_world)
+PHP_FUNCTION(hello_world)
 {
 	char *var = "World";
 	size_t var_len = sizeof("World") - 1;
@@ -132,7 +132,7 @@ PHP_MINFO_FUNCTION(action_at_a_distance)
 ZEND_BEGIN_ARG_INFO(arginfo_action_at_a_distance_extension_loaded, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO(arginfo_hellow_world, 0)
+ZEND_BEGIN_ARG_INFO(arginfo_hello_world, 0)
 	ZEND_ARG_INFO(0, str)
 ZEND_END_ARG_INFO()
 /* }}} */
@@ -146,7 +146,7 @@ ZEND_END_ARG_INFO()
  */
 static const zend_function_entry action_at_a_distance_functions[] = {
 	PHP_FE(action_at_a_distance_extension_loaded,		arginfo_action_at_a_distance_extension_loaded)
-	PHP_FE(hellow_world,		arginfo_hellow_world)
+	PHP_FE(hello_world,		arginfo_hello_world)
 	PHP_FE(action_at_a_distance_scale_ref,	arginfo_action_at_a_distance_scale_ref)
 	PHP_FE_END
 };

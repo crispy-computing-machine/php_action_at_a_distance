@@ -8,7 +8,7 @@ if (!extension_loaded('action_at_a_distance')) {
 ?>
 --FILE--
 <?php
-$ret = test_test1();
+$ret = action_at_a_distance_extension_loaded();
 
 var_dump($ret);
 ?>

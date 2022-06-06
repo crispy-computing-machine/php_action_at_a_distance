@@ -8,8 +8,8 @@ if (!extension_loaded('action_at_a_distance')) {
 ?>
 --FILE--
 <?php
-var_dump(test_test2());
-var_dump(test_test2('PHP'));
+var_dump(hello_world());
+var_dump(hello_world('PHP'));
 ?>
 --EXPECT--
 string(11) "Hello World"
