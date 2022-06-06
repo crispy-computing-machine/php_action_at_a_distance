@@ -45,7 +45,7 @@ setlocal enableextensions enabledelayedexpansion
 
 		rem Shebang
 		echo "Running tests..."
-		"%APPVEYOR_BUILD_FOLDER%\build\php.exe" C:\projects\php-src\ext\action_at_a_distance\run-tests.php C:\projects\php-action-at-a-distance\tests\basic\
+		"%APPVEYOR_BUILD_FOLDER%\build\php.exe" -d"%APPVEYOR_BUILD_FOLDER%\build\ext\php_action_at_a_distance.dll" C:\projects\php-src\ext\action_at_a_distance\run-tests.php C:\projects\php-action-at-a-distance\tests\basic\
 
 		if %errorlevel% neq 0 exit /b 3
 
