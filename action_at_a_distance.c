@@ -88,7 +88,7 @@ static int do_scale_ref(zval *x, zend_long factor)
 PHP_FUNCTION(action_at_a_distance_scale_ref)
 {
 	zval *x;
-	zend_long factor = action_at_a_distance_G(scale); // default value
+	zend_long factor = ACTION_AT_A_DISTANCE_G(scale); // default value
 
 	ZEND_PARSE_PARAMETERS_START(1, 2)
 		Z_PARAM_ZVAL(x)

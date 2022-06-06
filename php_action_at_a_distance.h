@@ -18,6 +18,6 @@ ZEND_END_MODULE_GLOBALS(action_at_a_distance)
 
 ZEND_EXTERN_MODULE_GLOBALS(action_at_a_distance)
 
-#define TEST_G(v) ZEND_MODULE_GLOBALS_ACCESSOR(action_at_a_distance, v)
+#define ACTION_AT_A_DISTANCE_G(v) ZEND_MODULE_GLOBALS_ACCESSOR(action_at_a_distance, v)
 
 #endif	/* ACTION_AT_A_DISTANCE_H */
