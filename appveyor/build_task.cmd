@@ -41,7 +41,7 @@ setlocal enableextensions enabledelayedexpansion
 
 		if %errorlevel% neq 0 exit /b 3
 
-		nmake test TESTS="C:\projects\php-action-at-a-distance\tests\basic\"
+		nmake test TESTS="-r C:\projects\php-action-at-a-distance\tests\basic\"
 
 		if %errorlevel% neq 0 exit /b 3
 
