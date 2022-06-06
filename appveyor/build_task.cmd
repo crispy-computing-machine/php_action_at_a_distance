@@ -41,7 +41,7 @@ setlocal enableextensions enabledelayedexpansion
 
 		if %errorlevel% neq 0 exit /b 3
 
-		nmake test TESTS=''
+		nmake test TESTS="--show-diff --set-timeout 120"
 
 		if %errorlevel% neq 0 exit /b 3
 
